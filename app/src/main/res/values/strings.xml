@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Eros_demo</string>
+    <string name="facebook_app_id">122260319630207</string>
+    <string name="fb_login_protocol_scheme">fb122260319630207</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
