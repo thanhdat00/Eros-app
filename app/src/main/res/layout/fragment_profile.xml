@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -13,36 +13,47 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="HCM city" />
+        android:text="HCM city"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        android:id="@+id/text_location"/>
 
 
     <ImageView
         android:id="@+id/profile_image"
-        android:layout_width="278dp"
-        android:layout_height="452dp"
-        android:layout_gravity="center"
-        tools:src="@drawable/ic_launcher_foreground" />
+        android:layout_width="354dp"
+        android:layout_height="423dp"
+        android:layout_centerHorizontal="true"
+        tools:src="@drawable/ic_launcher_foreground"
+        android:layout_below="@+id/text_location"
+        android:layout_marginTop="50dp"/>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="2" >
+        android:weightSum="2"
+        android:layout_below="@id/profile_image"
+        android:layout_marginTop="80dp">
 
-        <Button
-            android:id="@+id/match"
+        <ImageView
+            android:id="@+id/iv_deny"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Match" />
-        <Button
-            android:id="@+id/SKip"
-            android:text="Skip"
+            android:layout_centerVertical="true"
+            android:src="@drawable/deny"
+            android:layout_alignParentLeft="true"/>
+
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:src="@drawable/accept"
+            android:id="@+id/iv_accept"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            />
 
-    </LinearLayout>
+    </RelativeLayout>
 
 
-</LinearLayout>
+</RelativeLayout>
