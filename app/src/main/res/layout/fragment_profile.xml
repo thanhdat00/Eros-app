@@ -37,15 +37,18 @@
         android:layout_below="@id/profile_image"
         android:layout_marginTop="80dp">
 
-        <ImageView
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_deny"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:src="@drawable/deny"
-            android:layout_alignParentLeft="true"/>
+            android:layout_alignParentLeft="true"
+            />
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/accept"

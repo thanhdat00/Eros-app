@@ -39,4 +39,7 @@ dependencies {
 
     // Java language implementation
     implementation "androidx.fragment:fragment:$fragment_version"
+
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
 }
