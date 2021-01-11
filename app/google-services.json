@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "54710856394",
+    "firebase_url": "https://eros-demo-default-rtdb.firebaseio.com",
+    "project_id": "eros-demo",
+    "storage_bucket": "eros-demo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:54710856394:android:c2759058c70ab563776233",
+        "android_client_info": {
+          "package_name": "com.company.eros_demo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "54710856394-ist4oaoacnt6b7chai2ksq242sagpct7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKnf7qNLRtsOO9HKexy7gbXVS5PPsapFI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "54710856394-ist4oaoacnt6b7chai2ksq242sagpct7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:54710856394:android:d5a316923afdab18776233",
+        "android_client_info": {
+          "package_name": "com.example.eros_demo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "54710856394-viep92d883epbheks0ha63gbds5ln8io.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.eros_demo",
+            "certificate_hash": "f575154864f425e01e6ce5c013b6ca87f4237b45"
+          }
+        },
+        {
+          "client_id": "54710856394-ist4oaoacnt6b7chai2ksq242sagpct7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKnf7qNLRtsOO9HKexy7gbXVS5PPsapFI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "54710856394-ist4oaoacnt6b7chai2ksq242sagpct7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

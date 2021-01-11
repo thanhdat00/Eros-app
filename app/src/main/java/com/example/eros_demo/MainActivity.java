@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,6 +17,11 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
     private TextView info;
@@ -23,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private LoginButton login;
     private CallbackManager callbackManager;
     private TextView name;
-
+    int accountExist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
         profile = findViewById(R.id.profile);
         login = findViewById(R.id.login);
         name = findViewById(R.id.name);
-
         callbackManager = CallbackManager.Factory.create();
+        accountExist = 0;
 
         login.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
@@ -47,8 +53,35 @@ public class MainActivity extends AppCompatActivity {
 //                        "/picture?type=normal";
                 //Picasso.get().load(imageURL).into(profile);
 
-                Intent intent = new Intent(MainActivity.this, MainScreenActivity.class);
-                startActivity(intent);
+                final String userID = loginResult.getAccessToken().getUserId();
+                DataSnapshot dataSnapshot = null;
+
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = database.getReference("user_profile");
+                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.hasChild(userID)){
+                            accountExist = 1;
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+                if (accountExist == 1) {
+                    Intent intent = new Intent(MainActivity.this, MainScreenActivity.class);
+                    intent.putExtra("UserID", userID);
+                    startActivity(intent);
+                }
+                else {
+                    Intent intent = new Intent(MainActivity.this, CreateProfileActivity.class);
+                    intent.putExtra("UserID", userID);
+                    startActivity(intent);
+                }
             }
 
             @Override
@@ -71,8 +104,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void toMainScreen(View view) {
-        Intent intent = new Intent(MainActivity.this, MainScreenActivity.class);
+    public void toCreateProfile(View view) {
+//        FirebaseDatabase database = FirebaseDatabase.getInstance();
+//        DatabaseReference myRef = database.getReference("message");
+//
+//        myRef.setValue("Hello, World!");
+
+
+        Intent intent = new Intent(MainActivity.this, CreateProfileActivity.class);
 
         startActivity(intent);
     }
