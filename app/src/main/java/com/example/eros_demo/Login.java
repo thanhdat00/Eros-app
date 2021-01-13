@@ -17,7 +17,6 @@ public class Login extends AppCompatActivity {
     }
 
     private void initComponent() {
-        facebook_login = findViewById(R.id.iv_facebook_login);
         gmail_login = findViewById(R.id.iv_gmail_login);
     }
 }
