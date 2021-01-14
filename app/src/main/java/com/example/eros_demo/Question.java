@@ -1,6 +1,8 @@
 package com.example.eros_demo;
 
-public class Question {
+import java.io.Serializable;
+
+public class Question implements Serializable {
     String question;
     String answerA;
     String answerB;
@@ -65,7 +67,6 @@ public class Question {
     public void setResult(String result) {
         this.result = result;
     }
-
 
 
 }

@@ -2,17 +2,16 @@ package com.example.eros_demo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
 import java.util.ArrayList;
-import java.util.List;
 
 public class CreateProfileActivity extends AppCompatActivity {
     EditText nameEditText;
@@ -25,14 +24,25 @@ public class CreateProfileActivity extends AppCompatActivity {
     EditText answerC;
     EditText answerD;
     EditText resultEditText;
-    Button submitButton;
+    Button submitButton,addQuestionButton;
     String userID;
+    ListView question_lv ;
+    int REQUEST_CODE = 100;
+    ArrayList<Question> questions = null;
+    ArrayAdapter<Question> questionArrayAdapter = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_profile);
         initComponent();
+
+
+        questions = new ArrayList<Question>();
+
+        questionArrayAdapter = new QuestionsAdapter(this, 0,questions);
+        question_lv.setAdapter(questionArrayAdapter);
+
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,30 +53,39 @@ public class CreateProfileActivity extends AppCompatActivity {
                 String age = ageEditText.getText().toString();
                 String phoneNumber = phoneEditText.getText().toString();
                 String location = locationEditText.getText().toString();
-                String question = questionEditText.getText().toString();
-                String A = answerA.getText().toString();
-                String B = answerB.getText().toString();
-                String C = answerC.getText().toString();
-                String D = answerD.getText().toString();
-                String res = resultEditText.getText().toString();
+//                String question = questionEditText.getText().toString();
+//                String A = answerA.getText().toString();
+//                String B = answerB.getText().toString();
+//                String C = answerC.getText().toString();
+//                String D = answerD.getText().toString();
+//                String res = resultEditText.getText().toString();
+//
+//                Question question1 = new Question(question, A, B ,C ,D, res);
+//                List<Question> questionList = new ArrayList<>();
+                //questionList.add(question1);
 
-                Question question1 = new Question(question, A, B ,C ,D, res);
-                List<Question> questionList = new ArrayList<>();
-                questionList.add(question1);
+//                User user = new User(name, phoneNumber, location, questionList);
+//
+//                FirebaseDatabase database = FirebaseDatabase.getInstance();
+//                DatabaseReference myRef = database.getReference("user_profile/"+ userID);
+//                myRef.child("name").setValue(user.getUserName());
+//                myRef.child("phone").setValue(user.getPhoneNumber());
 
-                User user = new User(name, phoneNumber, location, questionList);
+                //List<Question> questionList1 = user.getQuestionList();
 
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference("user_profile/"+ userID);
-                myRef.child("name").setValue(user.getUserName());
-                myRef.child("phone").setValue(user.getPhoneNumber());
+//                for (int i = 0; i < questionList1.size(); i++){
+//                    myRef.child("question").child(String.valueOf(i)).child("q").setValue(questionList1.get(i).getQuestion());
+//                    myRef.child("question").child(String.valueOf(i)).child("a").setValue(questionList1.get(i).getAnswerA());
+//                }
 
-                List<Question> questionList1 = user.getQuestionList();
+            }
+        });
 
-                for (int i = 0; i < questionList1.size(); i++){
-                    myRef.child("question").child(String.valueOf(i)).child("q").setValue(questionList1.get(i).getQuestion());
-                    myRef.child("question").child(String.valueOf(i)).child("a").setValue(questionList1.get(i).getAnswerA());
-                }
+        addQuestionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CreateProfileActivity.this, CreateQuestionActivity.class);
+                startActivityForResult(intent, REQUEST_CODE);
 
             }
         });
@@ -77,15 +96,18 @@ public class CreateProfileActivity extends AppCompatActivity {
         ageEditText = findViewById(R.id.age_edit_text);
         phoneEditText = findViewById(R.id.phone_edit_text);
         locationEditText = findViewById(R.id.location_edit_text);
-        questionEditText = findViewById(R.id.question_edit_text);
-        answerA = findViewById(R.id.answer_A);
-        answerB = findViewById(R.id.answer_B);
-        answerC = findViewById(R.id.answer_C);
-        answerD = findViewById(R.id.answer_D);
-        resultEditText = findViewById(R.id.result_edit_text);
+//        questionEditText = findViewById(R.id.question_edit_text);
+//        answerA = findViewById(R.id.answer_A);
+//        answerB = findViewById(R.id.answer_B);
+//        answerC = findViewById(R.id.answer_C);
+//        answerD = findViewById(R.id.answer_D);
+//        resultEditText = findViewById(R.id.result_edit_text);
         submitButton = findViewById(R.id.submit_button);
+        addQuestionButton = findViewById(R.id.add_question_button);
         Bundle bundle = getIntent().getExtras();
         userID = bundle.getString("UserID");
+        question_lv = findViewById(R.id.lv_questionsList);
+
 
     }
 
