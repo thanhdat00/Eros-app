@@ -35,11 +35,11 @@
         android:layout_centerHorizontal="true"
         android:layout_marginVertical="30dp"/>
 
-    <ImageView
+    <Button
         android:id="@+id/iv_gmail_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/gmail_login"
+        android:background="@drawable/gmail_login"
         android:layout_below="@+id/iv_facebook_login"
         android:layout_centerHorizontal="true"
         />

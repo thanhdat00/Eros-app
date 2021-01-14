@@ -1,19 +1,16 @@
-package com.example.eros_demo.MainScreen;
+package com.example.eros_demo;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.DiffUtil;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.LinearInterpolator;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.DiffUtil;
 
 import com.example.eros_demo.CardStackAdapter;
 import com.example.eros_demo.CardStackCallback;
@@ -30,59 +27,24 @@ import com.yuyakaido.android.cardstackview.SwipeableMethod;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ProfileFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class ProfileFragment extends Fragment {
+public class SwipeTest extends AppCompatActivity {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    private static final String TAG = "MainScreenActivity";
+    private static final String TAG = "SwipeTest";
     private CardStackLayoutManager manager;
     private CardStackAdapter adapter;
-    CardStackView cardStackView;
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public ProfileFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ProfileFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ProfileFragment newInstance(String param1, String param2) {
-        ProfileFragment fragment = new ProfileFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private Button likeButton;
+    private Button denyButton;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        setContentView(R.layout.activity_swipe_test);
 
+        initComponent();
+        handleClick();
 
-        manager = new CardStackLayoutManager(getContext(), new CardStackListener() {
+        CardStackView cardStackView = findViewById(R.id.card_stack_view);
+        manager = new CardStackLayoutManager(this, new CardStackListener() {
             @Override
             public void onCardDragging(Direction direction, float ratio) {
                 Log.d(TAG, "onCardDragging: d=" + direction.name() + " ratio=" + ratio);
@@ -92,16 +54,16 @@ public class ProfileFragment extends Fragment {
             public void onCardSwiped(Direction direction) {
                 Log.d(TAG, "onCardSwiped: p=" + manager.getTopPosition() + " d=" + direction);
                 if (direction == Direction.Right){
-                    Toast.makeText(getContext(), "Direction Right", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Direction Right", Toast.LENGTH_SHORT).show();
                 }
                 if (direction == Direction.Top){
-                    Toast.makeText(getContext(), "Direction Top", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Direction Top", Toast.LENGTH_SHORT).show();
                 }
                 if (direction == Direction.Left){
-                    Toast.makeText(getContext(), "Direction Left", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Direction Left", Toast.LENGTH_SHORT).show();
                 }
                 if (direction == Direction.Bottom){
-                    Toast.makeText(getContext(), "Direction Bottom", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Direction Bottom", Toast.LENGTH_SHORT).show();
                 }
 
                 // Paginating
@@ -150,6 +112,26 @@ public class ProfileFragment extends Fragment {
 
     }
 
+    private void handleClick() {
+        likeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "Like Click", Toast.LENGTH_LONG).show();
+            }
+        });
+        denyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "Skip Click", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private void initComponent() {
+        likeButton = findViewById(R.id.iv_accept);
+        denyButton = findViewById(R.id.iv_deny);
+    }
+
     private void paginate() {
         List<ItemModel> old = adapter.getItems();
         List<ItemModel> baru = new ArrayList<>(addList());
@@ -174,14 +156,4 @@ public class ProfileFragment extends Fragment {
         items.add(new ItemModel(R.drawable.sample5, "Marmut", "25", "Hutan"));
         return items;
     }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        cardStackView = getView().findViewById(R.id.card_stack_view);
-        return inflater.inflate(R.layout.fragment_profile, container, false);
-    }
-
-
 }

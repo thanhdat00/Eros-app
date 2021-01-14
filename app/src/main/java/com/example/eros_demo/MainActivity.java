@@ -10,6 +10,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private CallbackManager callbackManager;
     private TextView name;
     private Button facebookLogIn;
+    private Button gmailLogIn;
     int accountExist;
 
     @Override
@@ -48,12 +50,14 @@ public class MainActivity extends AppCompatActivity {
         FacebookSdk.sdkInitialize(this.getApplicationContext());
 
         facebookLogIn = findViewById(R.id.iv_facebook_login);
+        gmailLogIn = findViewById(R.id.iv_gmail_login);
 
         accountExist = 0;
         callbackManager = CallbackManager.Factory.create();
         LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
+
                 //info.setText("User id: "+ loginResult.getAccessToken().getUserId());
 //                String imageURL = "https://graph.facebook.com/" +
 //                        loginResult.getAccessToken().getUserId() +
@@ -61,33 +65,34 @@ public class MainActivity extends AppCompatActivity {
                 //Picasso.get().load(imageURL).into(profile);
 
                 final String userID = loginResult.getAccessToken().getUserId();
+                Toast.makeText(getApplicationContext(),userID, Toast.LENGTH_LONG).show();
 
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference("user_profile");
-                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.hasChild(userID)) {
-                            accountExist = 1;
-                        }
-
-                        if (accountExist == 1) {
-                            Intent intent = new Intent(MainActivity.this, MainScreenActivity.class);
-                            intent.putExtra("UserID", userID);
-                            startActivity(intent);
-                        } else {
-                            Intent intent = new Intent(MainActivity.this, CreateProfileActivity.class);
-                            intent.putExtra("UserID", userID);
-                            startActivity(intent);
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-
-                });
+//                FirebaseDatabase database = FirebaseDatabase.getInstance();
+//                DatabaseReference myRef = database.getReference("user_profile");
+//                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                        if (snapshot.hasChild(userID)) {
+//                            accountExist = 1;
+//                        }
+//
+//                        if (accountExist == 1) {
+//                            Intent intent = new Intent(MainActivity.this, MainScreenActivity.class);
+//                            intent.putExtra("UserID", userID);
+//                            startActivity(intent);
+//                        } else {
+//                            Intent intent = new Intent(MainActivity.this, CreateProfileActivity.class);
+//                            intent.putExtra("UserID", userID);
+//                            startActivity(intent);
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError error) {
+//
+//                    }
+//
+//                });
             }
 
             @Override
@@ -107,6 +112,13 @@ public class MainActivity extends AppCompatActivity {
                 LoginManager.getInstance().logInWithReadPermissions(MainActivity.this, Arrays.asList("public_profile", "user_friends"));
             }
         });
+
+        gmailLogIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toCreateProfile();
+            }
+        });
     }
 
     @Override
@@ -116,15 +128,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void toCreateProfile(View view) {
+    public void toCreateProfile() {
 //        FirebaseDatabase database = FirebaseDatabase.getInstance();
 //        DatabaseReference myRef = database.getReference("message");
 //
 //        myRef.setValue("Hello, World!");
 
 
-        Intent intent = new Intent(MainActivity.this, CreateProfileActivity.class);
-
+        Intent intent = new Intent(MainActivity.this, SwipeTest.class);
         startActivity(intent);
     }
 }
