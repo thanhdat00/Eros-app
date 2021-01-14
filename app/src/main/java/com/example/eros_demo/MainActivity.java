@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
     private CallbackManager callbackManager;
     private TextView name;
     private Button facebookLogIn;
+    private Button gmailLogin;
+
     int accountExist;
 
     @Override
@@ -48,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         FacebookSdk.sdkInitialize(this.getApplicationContext());
 
         facebookLogIn = findViewById(R.id.iv_facebook_login);
+        gmailLogin = findViewById(R.id.iv_gmail_login);
 
         accountExist = 0;
         callbackManager = CallbackManager.Factory.create();
@@ -105,6 +108,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 LoginManager.getInstance().logInWithReadPermissions(MainActivity.this, Arrays.asList("public_profile", "user_friends"));
+            }
+        });
+        gmailLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CreateProfileActivity.class);
+                startActivity(intent);
+                finish();
+
             }
         });
     }

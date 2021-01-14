@@ -5,83 +5,118 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".CreateProfileActivity">
+    tools:context=".CreateProfileActivity"
+    android:padding="30dp"
+    android:background="@color/background">
 
-    <EditText
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="name"
-        android:id="@+id/name_edit_text"
-        />
+        android:layout_height="500dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/age_edit_text"
-        android:text="age"
-        />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/create_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Name"
+                style="@style/Widget.Design.TextInputLayout"
+                app:hintTextColor="#FFFFFF"
+                android:paddingBottom="10dp"
+                >
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/phone_edit_text"
-        android:text="phone"
-        />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:id="@+id/name_edit_text"
+                    android:textColor="#FFFFFF"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="location"
-        android:id="@+id/location_edit_text"
-        />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/create_age"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.Design.TextInputLayout"
+                    android:hint="Age"
+                app:hintTextColor="#FFFFFF"
+                android:paddingBottom="10dp"
+                >
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/question_edit_text"
-        android:text="question"
-        />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:id="@+id/age_edit_text"
+                    android:textColor="#FFFFFF"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="A"
-        android:id="@+id/answer_A"
-        />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/create_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.Design.TextInputLayout"
+                android:hint="Phone"
+                app:hintTextColor="#FFFFFF"
+                android:paddingBottom="10dp">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="B"
-        android:id="@+id/answer_B"
-        />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:id="@+id/phone_edit_text"
+                    android:textColor="#FFFFFF"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="C"
-        android:id="@+id/answer_C"
-        />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="D"
-        android:id="@+id/answer_D"
-        />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/create_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.Design.TextInputLayout"
+                android:hint="Location"
+                app:hintTextColor="#FFFFFF"
+                android:paddingBottom="10dp">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/result_edit_text"
-        android:text="res"
-        />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:id="@+id/location_edit_text"
+                    android:textColor="#FFFFFF"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FFFFFF"
+                android:textSize="15dp"
+                android:text="Questions"
+                android:paddingBottom="10dp"/>
+
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/lv_questionsList"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/add_question_button"
+                android:text="Add question"
+                android:paddingBottom="10dp"
+                />
+
+
+
+        </LinearLayout>
+    </ScrollView>
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Next"
+        android:text="Submit"
         android:id="@+id/submit_button"
+        android:paddingBottom="10dp"
         />
-
 </LinearLayout>
