@@ -38,23 +38,26 @@
         android:layout_marginTop="80dp">
 
 
-
-        <de.hdodenhof.circleimageview.CircleImageView
+        <ImageView
             android:id="@+id/iv_deny"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_centerVertical="true"
-            android:src="@drawable/deny"
+            android:src="@drawable/x_icon"
+            android:layout_marginLeft="50dp"
             android:layout_alignParentLeft="true"
+
             />
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/accept"
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/heart_icon"
             android:id="@+id/iv_accept"
             android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
             android:layout_alignParentRight="true"
+            android:layout_marginRight="50dp"
             />
 
     </RelativeLayout>
