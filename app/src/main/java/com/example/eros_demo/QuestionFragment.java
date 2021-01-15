@@ -1,4 +1,4 @@
-package com.example.eros_demo.Question;
+package com.example.eros_demo;
 
 import androidx.fragment.app.Fragment;
 

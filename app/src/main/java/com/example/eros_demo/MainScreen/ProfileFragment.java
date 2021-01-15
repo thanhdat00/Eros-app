@@ -147,7 +147,6 @@ public class ProfileFragment extends Fragment {
         cardStackView.setLayoutManager(manager);
         cardStackView.setAdapter(adapter);
         cardStackView.setItemAnimator(new DefaultItemAnimator());
-
     }
 
     private void paginate() {
@@ -182,6 +181,5 @@ public class ProfileFragment extends Fragment {
         cardStackView = getView().findViewById(R.id.card_stack_view);
         return inflater.inflate(R.layout.fragment_profile, container, false);
     }
-
 
 }

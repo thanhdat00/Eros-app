@@ -1,5 +1,6 @@
 package com.example.eros_demo;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -42,7 +43,6 @@ public class CreateProfileActivity extends AppCompatActivity {
 
         questionArrayAdapter = new QuestionsAdapter(this, 0,questions);
         question_lv.setAdapter(questionArrayAdapter);
-
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,12 +107,14 @@ public class CreateProfileActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         userID = bundle.getString("UserID");
         question_lv = findViewById(R.id.lv_questionsList);
-
-
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 
-//    public void onClickSubmit(View view) {
+    //    public void onClickSubmit(View view) {
 //
 //        String name = nameEditText.toString();
 //        String age = ageEditText.toString();

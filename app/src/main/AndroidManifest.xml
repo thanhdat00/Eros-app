@@ -15,7 +15,7 @@
         <activity android:name=".SwipeTest"></activity>
         <activity android:name=".CreateQuestionActivity" />
 
-        <activity android:name=".Question.CreateQuestionActivity"></activity>
+        <activity android:name=".CreateQuestionActivity"></activity>
 
         <activity android:name=".CreateProfileActivity" />
         <activity android:name=".Login" />

@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
 
     private Button gmailLogIn;
 
->
     int accountExist;
 
     @Override
@@ -70,34 +69,34 @@ public class MainActivity extends AppCompatActivity {
                 //Picasso.get().load(imageURL).into(profile);
 
                 final String userID = loginResult.getAccessToken().getUserId();
-                Toast.makeText(getApplicationContext(),userID, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), userID, Toast.LENGTH_LONG).show();
 
-//                FirebaseDatabase database = FirebaseDatabase.getInstance();
-//                DatabaseReference myRef = database.getReference("user_profile");
-//                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                        if (snapshot.hasChild(userID)) {
-//                            accountExist = 1;
-//                        }
-//
-//                        if (accountExist == 1) {
-//                            Intent intent = new Intent(MainActivity.this, MainScreenActivity.class);
-//                            intent.putExtra("UserID", userID);
-//                            startActivity(intent);
-//                        } else {
-//                            Intent intent = new Intent(MainActivity.this, CreateProfileActivity.class);
-//                            intent.putExtra("UserID", userID);
-//                            startActivity(intent);
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//
-//                    }
-//
-//                });
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = database.getReference("user_profile");
+                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.hasChild(userID)) {
+                            accountExist = 1;
+                        }
+
+                        if (accountExist == 1) {
+                            Intent intent = new Intent(MainActivity.this, SwipeTest.class);
+                            intent.putExtra("UserID", userID);
+                            startActivity(intent);
+                        } else {
+                            Intent intent = new Intent(MainActivity.this, CreateProfileActivity.class);
+                            intent.putExtra("UserID", userID);
+                            startActivity(intent);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+
+                });
             }
 
             @Override
@@ -123,14 +122,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-        gmailLogIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, CreateProfileActivity.class);
+                intent.putExtra("UserID", "1828823");
                 startActivity(intent);
                 finish();
-
-
             }
         });
     }
@@ -143,13 +138,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void toCreateProfile() {
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        DatabaseReference myRef = database.getReference("message");
-//
-//        myRef.setValue("Hello, World!");
-
-
         Intent intent = new Intent(MainActivity.this, SwipeTest.class);
         startActivity(intent);
     }
+
 }

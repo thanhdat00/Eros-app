@@ -14,6 +14,8 @@ import androidx.annotation.Nullable;
 import java.util.List;
 
 public class QuestionsAdapter extends ArrayAdapter<Question> {
+
+
     public QuestionsAdapter(@NonNull Context context, int resource, @NonNull List<Question> objects) {
         super(context, resource, objects);
     }
