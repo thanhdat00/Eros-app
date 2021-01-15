@@ -148,6 +148,7 @@ public class Matching extends AppCompatActivity implements View.OnClickListener 
                 else{
                     Intent intent = new Intent(Matching.this, Matching_success.class);
                     startActivity(intent);
+                    finish();
                 }
         }
 

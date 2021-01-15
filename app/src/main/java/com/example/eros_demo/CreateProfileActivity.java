@@ -39,35 +39,42 @@ public class CreateProfileActivity extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),"okey", Toast.LENGTH_LONG).show();
+                if (questions.size() == 0) {
+                    Toast.makeText(getApplicationContext(),"Add some questions", Toast.LENGTH_LONG).show();
 
-                String name = nameEditText.getText().toString();
-                String age = ageEditText.getText().toString();
-                String phoneNumber = phoneEditText.getText().toString();
-                String location = locationEditText.getText().toString();
+                }
+                else{
+                    Toast.makeText(getApplicationContext(),"okey", Toast.LENGTH_LONG).show();
 
-                User user = new User(name, phoneNumber, location, questions);
+                    String name = nameEditText.getText().toString();
+                    String age = ageEditText.getText().toString();
+                    String phoneNumber = phoneEditText.getText().toString();
+                    String location = locationEditText.getText().toString();
 
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference("user_profile/"+ userID);
-                myRef.child("name").setValue(user.getUserName());
-                myRef.child("phone").setValue(user.getPhoneNumber());
-                myRef.child("location").setValue(user.getLocation());
+                    User user = new User(name, phoneNumber, location, questions);
 
-                List<Question> questionList1 = user.getQuestionList();
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    DatabaseReference myRef = database.getReference("user_profile/"+ userID);
+                    myRef.child("name").setValue(user.getUserName());
+                    myRef.child("phone").setValue(user.getPhoneNumber());
+                    myRef.child("location").setValue(user.getLocation());
 
-                for (int i = 0; i < questionList1.size(); i++){
-                    myRef.child("question").child(String.valueOf(i)).child("q").setValue(questionList1.get(i).getQuestion());
-                    myRef.child("question").child(String.valueOf(i)).child("a").setValue(questionList1.get(i).getAnswerA());
-                    myRef.child("question").child(String.valueOf(i)).child("b").setValue(questionList1.get(i).getAnswerB());
-                    myRef.child("question").child(String.valueOf(i)).child("c").setValue(questionList1.get(i).getAnswerC());
-                    myRef.child("question").child(String.valueOf(i)).child("d").setValue(questionList1.get(i).getAnswerD());
-                    myRef.child("question").child(String.valueOf(i)).child("res").setValue(questionList1.get(i).getResult());
+                    List<Question> questionList1 = user.getQuestionList();
+
+                    for (int i = 0; i < questionList1.size(); i++){
+                        myRef.child("question").child(String.valueOf(i)).child("q").setValue(questionList1.get(i).getQuestion());
+                        myRef.child("question").child(String.valueOf(i)).child("a").setValue(questionList1.get(i).getAnswerA());
+                        myRef.child("question").child(String.valueOf(i)).child("b").setValue(questionList1.get(i).getAnswerB());
+                        myRef.child("question").child(String.valueOf(i)).child("c").setValue(questionList1.get(i).getAnswerC());
+                        myRef.child("question").child(String.valueOf(i)).child("d").setValue(questionList1.get(i).getAnswerD());
+                        myRef.child("question").child(String.valueOf(i)).child("res").setValue(questionList1.get(i).getResult());
+                    }
+
+                    Intent intent = new Intent(CreateProfileActivity.this, SwipeTest.class);
+                    startActivity(intent);
+                    finish();
                 }
 
-                Intent intent = new Intent(CreateProfileActivity.this, SwipeTest.class);
-                startActivity(intent);
-                finish();
             }
         });
 

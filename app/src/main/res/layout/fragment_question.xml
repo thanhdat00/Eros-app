@@ -98,33 +98,57 @@
         android:weightSum="4"
         android:orientation="horizontal">
 
-        <Button
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/tv_A"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:padding="15dp"
+            android:textColor="#7A8089"
+            android:textSize="18sp"
             android:text="A"
-            android:id="@+id/result_A"
             android:layout_weight="1"
-            />
+            android:background="@drawable/default_option_border_bg"/>
 
-        <Button
-            android:id="@+id/result_B"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/tv_B"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:padding="15dp"
+            android:textColor="#7A8089"
+            android:textSize="18sp"
+            android:text="B"
             android:layout_weight="1"
-            android:text="B" />
+            android:background="@drawable/default_option_border_bg"/>
 
-        <Button
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/tv_C"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:padding="15dp"
+            android:textColor="#7A8089"
+            android:textSize="18sp"
             android:text="C"
-            android:id="@+id/result_C"
-            android:layout_weight="1"/>
-        <Button
-            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/default_option_border_bg"/>
+
+        <TextView
+            android:id="@+id/tv_D"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:padding="15dp"
+            android:textColor="#7A8089"
+            android:textSize="18sp"
             android:text="D"
-            android:id="@+id/result_D"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:background="@drawable/default_option_border_bg"/>
     </LinearLayout>
 
     <Button
