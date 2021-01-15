@@ -30,7 +30,8 @@ public class QuestionsAdapter extends ArrayAdapter<Question> {
         }
 
         TextView textView = convertView.findViewById(R.id.no_question);
-        textView.setText("Question " + String.valueOf(position+1));
+        //textView.setText("Question " + String.valueOf(position+1));
+        textView.setText(question.getQuestion());
 
         return convertView;
     }

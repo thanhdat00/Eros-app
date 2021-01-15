@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent intent = new Intent(MainActivity.this, CreateProfileActivity.class);
-                intent.putExtra("UserID", "1828823");
+                intent.putExtra("UserID", "11111111");
                 startActivity(intent);
                 finish();
             }
