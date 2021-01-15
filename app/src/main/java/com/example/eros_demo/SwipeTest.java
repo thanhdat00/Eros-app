@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.DiffUtil;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -55,6 +56,8 @@ public class SwipeTest extends AppCompatActivity {
                 Log.d(TAG, "onCardSwiped: p=" + manager.getTopPosition() + " d=" + direction);
                 if (direction == Direction.Right){
                     Toast.makeText(getApplicationContext(), "Direction Right", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(SwipeTest.this, Matching.class);
+                    startActivity(intent);
                 }
                 if (direction == Direction.Top){
                     Toast.makeText(getApplicationContext(), "Direction Top", Toast.LENGTH_SHORT).show();
