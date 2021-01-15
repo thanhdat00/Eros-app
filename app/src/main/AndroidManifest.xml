@@ -15,7 +15,6 @@
         <activity android:name=".Matching" />
         <activity android:name=".SwipeTest" />
         <activity android:name=".CreateQuestionActivity" />
-        <activity android:name=".CreateQuestionActivity" />
         <activity android:name=".CreateProfileActivity" />
         <activity android:name=".Login" />
         <activity android:name=".MainScreen.MainScreenActivity" />

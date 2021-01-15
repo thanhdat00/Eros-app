@@ -120,6 +120,8 @@ public class SwipeTest extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "Like Click", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(SwipeTest.this, Matching.class);
+                startActivity(intent);
             }
         });
         denyButton.setOnClickListener(new View.OnClickListener() {
@@ -151,6 +153,7 @@ public class SwipeTest extends AppCompatActivity {
         items.add(new ItemModel(R.drawable.sample3, "Sukijah", "27", "Jonggol"));
         items.add(new ItemModel(R.drawable.sample4, "Markobar", "19", "Bandung"));
         items.add(new ItemModel(R.drawable.sample5, "Marmut", "25", "Hutan"));
+        items.add(new ItemModel(R.drawable.matching, "Phuong Anh", "21", "Ho Chi Minh"));
 
         items.add(new ItemModel(R.drawable.sample1, "Markonah", "24", "Jember"));
         items.add(new ItemModel(R.drawable.sample2, "Marpuah", "20", "Malang"));

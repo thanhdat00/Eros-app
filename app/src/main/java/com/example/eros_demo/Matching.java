@@ -33,11 +33,7 @@ public class Matching extends AppCompatActivity implements View.OnClickListener 
         tv_answerC.setOnClickListener(this);
         tv_answerD.setOnClickListener(this);
 
-
         btn_submit.setOnClickListener(this);
-
-
-
 
     }
 
