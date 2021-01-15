@@ -3,6 +3,7 @@ package com.example.eros_demo;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -148,7 +149,10 @@ public class Matching extends AppCompatActivity implements View.OnClickListener 
                 curentPos++;
                 if (curentPos <= questions.size())
                     setQuestion();
-
+                else{
+                    Intent intent = new Intent(Matching.this, Matching_success.class);
+                    startActivity(intent);
+                }
         }
 
     }
